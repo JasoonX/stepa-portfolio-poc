@@ -10,9 +10,22 @@
   font-family: Poppins;
   src: url("../../public/fonts/Poppins-ExtraLight.ttf");
 }
+@font-face {
+  font-family: Anton;
+  src: url("../../public/fonts/Anton-Regular.ttf");
+}
 * {
   font-family: LuloClean;
 }
 .poppins {
   font-family: Poppins;
+}
+.anton {
+  font-family: Anton !important;
+}
+.text-selected {
+  color: rgb(32, 206, 136);
+}
+.disableClick {
+  pointer-events: none;
 }

@@ -1,5 +1,7 @@
 import { PrismaClient } from '@prisma/client';
+import classNames from 'classnames';
 import Head from 'next/head';
+import Link from 'next/link';
 import { ParsedUrlQuery } from 'querystring';
 
 export type GetStaticPropsReturnType<P> = {
@@ -26,7 +28,11 @@ export async function getStaticProps() {
 
 const Home = ({ photos }: InferredStaticProps<typeof getStaticProps>) => {
   // const hello = trpc.useQuery(["example.hello", { text: "from tRPC" }]);
-
+  const menuItems = [
+    { name: "PHOTOS", href: "/" },
+    { name: "DIARY", href: "/diary" },
+    { name: "CONTACT", href: "/contact" },
+  ];
   return (
     <>
       <Head>
@@ -35,13 +41,28 @@ const Home = ({ photos }: InferredStaticProps<typeof getStaticProps>) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="relative p-20">
-        <h1 className="text-6xl mb-20">MAX MONTGOMERY</h1>
+        <div className="flex justify-between gap-20">
+          <h1 className="text-6xl mb-20">MAX MONTGOMERY</h1>
+          <div className="flex grow justify-evenly">
+            {menuItems.map((item, i) => (
+              <Link href={item.href} key={item.href}>
+                <a
+                  className={classNames("anton text-xl", {
+                    "text-selected disableClick": i === 0,
+                  })}
+                >
+                  {item.name}
+                </a>
+              </Link>
+            ))}
+          </div>
+        </div>
         <div className="flex flex-wrap  gap-20 mt-4 px-10 w-fit justify-center">
           {photos.map((photo) => (
             <img
               src={photo.displayUrl}
               alt="test"
-              key={photo.name}
+              key={photo.displayUrl}
               className="h-[500px]"
             />
           ))}
