@@ -2,7 +2,6 @@ import { PrismaClient } from '@prisma/client';
 import Head from 'next/head';
 import { ParsedUrlQuery } from 'querystring';
 
-import type { NextPage } from "next";
 export type GetStaticPropsReturnType<P> = {
   props: P;
   revalidate?: number | boolean;
