@@ -16,7 +16,11 @@ export type InferredStaticProps<T> = T extends (ctx?: {
 }) => Promise<GetStaticPropsReturnType<infer P>>
   ? GetStaticPropsReturnType<P>["props"]
   : never;
-
+export const menuItems = [
+  { name: "PHOTOS", href: "/" },
+  { name: "DIARY", href: "/diary" },
+  { name: "CONTACT", href: "/contact" },
+];
 export async function getStaticProps() {
   const prisma = new PrismaClient();
   const photos = await prisma.photo.findMany();
@@ -28,11 +32,7 @@ export async function getStaticProps() {
 
 const Home = ({ photos }: InferredStaticProps<typeof getStaticProps>) => {
   // const hello = trpc.useQuery(["example.hello", { text: "from tRPC" }]);
-  const menuItems = [
-    { name: "PHOTOS", href: "/" },
-    { name: "DIARY", href: "/diary" },
-    { name: "CONTACT", href: "/contact" },
-  ];
+
   return (
     <>
       <Head>
