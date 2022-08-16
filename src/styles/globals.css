@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: LuloClean;
+  src: url("../../public/fonts/LuloClean/LuloClean.ttf");
+}
+* {
+  font-family: LuloClean;
+}
