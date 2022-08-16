@@ -36,16 +36,19 @@ const Home = ({ photos }: InferredStaticProps<typeof getStaticProps>) => {
       </Head>
       <div className="relative p-20">
         <h1 className="text-6xl mb-20">MAX MONTGOMERY</h1>
-        <div className="flex flex-wrap h-[500px] gap-20 mt-4 px-10 w-fit justify-center">
+        <div className="flex flex-wrap  gap-20 mt-4 px-10 w-fit justify-center">
           {photos.map((photo) => (
             <img
               src={photo.displayUrl}
               alt="test"
               key={photo.name}
-              className="h-full"
+              className="h-[500px]"
             />
           ))}
         </div>
+        <p className="poppins ml-auto mt-20 w-fit text-sm font-light">
+          All Images © Max Montgomery Photography.
+        </p>
       </div>
     </>
   );
